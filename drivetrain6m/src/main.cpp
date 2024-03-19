@@ -57,6 +57,10 @@ void autonomous(void) {
   // ..........................................................................
   // Insert autonomous user code here.
   // ..........................................................................
+
+  move_drivetrain(100,0);
+  wait(5, sec);
+  move_drivetrain(0,0);
 }
 
 void usercontrol(void) {
