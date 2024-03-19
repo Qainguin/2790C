@@ -26,6 +26,8 @@ motor r1 = motor(18);
 motor r2 = motor(19);
 motor r3 = motor(20);
 
+// Grouping all the drivetrain motors.
+
 motor_group all_drive_motors = motor_group(l1,l2,l3,r1,r2,r3);
 
 motor_group left_drive_motors = motor_group(l1,l2,l3);
@@ -41,6 +43,8 @@ motor_group right_drive_motors = motor_group(r1,r2,r3);
 /*  not every time that the robot is disabled.                               */
 /*---------------------------------------------------------------------------*/
 
+// A function that moves the drivetrain forwards and backwards by the x_strength parameter.
+// It also turns left and right by the y_strength parameter.
 void move_drivetrain(float x_strength, float y_strength) {
   all_drive_motors.spin(fwd);
   left_drive_motors.setVelocity(y_strength, pct);
@@ -101,15 +105,7 @@ void autonomous(void) {
 void usercontrol(void) {
   // User control code here, inside the loop
   while (true) {
-    move_drivetrain(-Controller.Axis1.position(),-Controller.Axis3.position());
-    // This is the main execution loop for the user control program.
-    // Each time through the loop your program should update motor + servo
-    // values based on feedback from the joysticks.
-
-    // ........................................................................
-    // Insert user code here. This is where you use the joystick values to
-    // update your motors, etc.
-    // ........................................................................
+    move_drivetrain(-Controller.Axis1.position(),-Controller.Axis3.position()); // Move and turn the drivetrain.
 
     wait(20, msec); // Sleep the task for a short amount of time to prevent wasted resources.
   }
