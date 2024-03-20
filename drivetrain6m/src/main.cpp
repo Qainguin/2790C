@@ -35,6 +35,8 @@ motor_group right_drive_motors = motor_group(r1,r2,r3);
 
 // A function that moves the drivetrain forwards and backwards by the x_strength parameter.
 // It also turns left and right by the y_strength parameter.
+
+// For the parameters, use opposites (eg. forward = -100, backward = 100).
 void move_drivetrain(float x_strength, float y_strength) {
   all_drive_motors.spin(fwd);
   left_drive_motors.setVelocity(y_strength, pct);
@@ -58,8 +60,8 @@ void autonomous(void) {
   // Insert autonomous user code here.
   // ..........................................................................
 
-  move_drivetrain(100,0);
-  wait(5, sec);
+  move_drivetrain(-100,0);
+  wait(1, sec);
   move_drivetrain(0,0);
 }
 
